@@ -27,5 +27,14 @@ export default({ config, DB }) => {
         });
     });
 
+    api.get('/:id', (req, res) => {
+        Restaurant.findById(req.params.id, (err, restaurant) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json(restaurant);
+        });
+    });
+
     return api;
 }
